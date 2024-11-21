@@ -14,9 +14,9 @@ This is a small project to help me make rust projects using the cargo cli, this 
 Once built you can run it in command prompt and parse 2 arguments: the file path for your project, the name of your project
 
 ```bash
-    RustProjectCreator C:\\Projects\\New HelloWorld
+RustProjectCreator C:\\Projects\\New HelloWorld
 ```
 
 ---
 
-This is my first "Majour" project using rust and so its nothing crazy and I expect to improve this in the future
+This is my first "major" project using rust and so its nothing crazy and I expect to improve this in the future
