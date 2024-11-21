@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "RustCreationTool"
+name = "RustProjectCreator"
 version = "1.0.0"
