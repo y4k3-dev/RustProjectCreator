@@ -19,6 +19,37 @@ cargo test
 ```
 "#;
 
+const TASKSSTRING: &str = r#"
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "Cargo Run",
+        "command": "cargo",
+        "args": ["run"],
+        "type": "shell"
+    },
+    {
+        "label": "Cargo Build",
+        "command": "cargo",
+        "args": ["build"],
+        "type": "shell"
+    },
+    {
+        "label": "Cargo Build Release",
+        "command": "cargo",
+        "args": ["build --release"],
+        "type": "shell"
+    },
+    {
+        "label": "Cargo Test",
+        "command": "cargo",
+        "args": ["test"],
+        "type": "shell"
+    }
+]
+}
+"#;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -39,6 +70,16 @@ fn main() {
 
     // Create a readme file
     create_readme(project_name, file_path);
+
+    // Create a tasks.json file
+    fs::write(
+        format!("{}/{}/.vscode/tasks.json", file_path, project_name),
+        TASKSSTRING,
+    )
+    .unwrap_or_else(|err| {
+        eprintln!("Error creating tasks.json: {}", err);
+        process::exit(1);
+    });
 
     // Open the project in Visual Studio Code using cmd as the path is only set for the current session
     open_visual_studio_code(file_path, project_name);
